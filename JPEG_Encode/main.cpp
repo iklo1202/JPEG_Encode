@@ -6,6 +6,7 @@ using namespace cv;
 using namespace std;
 
 #include "basic.h"
+#include "jpegEncoder.h"
 
 
 void showKentImg(kentImg* img)
@@ -34,18 +35,11 @@ int main()
 	kentImg* rImg = new kentImg(cvImg.cols, cvImg.rows, bgr[2].data);
 
 
-	ImageList* imgList = new ImageList();
-	ImageNode* node1 = new ImageNode(bImg);
-	ImageNode* node2 = new ImageNode(gImg);
-	ImageNode* node3 = new ImageNode(rImg);
-
-	imgList->Add(node1);
-	imgList->Add(node2);
-	imgList->Add(node3);
+	JPEG_Encoder* jpegEncoder = new JPEG_Encoder(bImg->width, bImg->height);
+	jpegEncoder->Encode(bImg, gImg, rImg);
 
 
-
-	showKentImg(imgList->pHead->img);
+	showKentImg(jpegEncoder->vImg);
 
 
 	cvWaitKey(0);
