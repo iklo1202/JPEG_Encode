@@ -33,7 +33,19 @@ int main()
 	kentImg* gImg = new kentImg(cvImg.cols, cvImg.rows, bgr[1].data);
 	kentImg* rImg = new kentImg(cvImg.cols, cvImg.rows, bgr[2].data);
 
-	showKentImg(bImg);
+
+	ImageList* imgList = new ImageList();
+	ImageNode* node1 = new ImageNode(bImg);
+	ImageNode* node2 = new ImageNode(gImg);
+	ImageNode* node3 = new ImageNode(rImg);
+
+	imgList->Add(node1);
+	imgList->Add(node2);
+	imgList->Add(node3);
+
+
+
+	showKentImg(imgList->pHead->img);
 
 
 	cvWaitKey(0);

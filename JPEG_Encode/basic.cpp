@@ -21,6 +21,7 @@ kentImg::kentImg(int width, int height, unsigned char* data)
 kentImg::~kentImg()
 {
 	delete[] data;
+	data = NULL;
 }
 
 
